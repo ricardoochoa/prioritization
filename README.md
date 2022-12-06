@@ -43,7 +43,7 @@ Next, we will import the configuration (config) file for Male.
 
 ``` r
 data("male_config")
-knitr::kable(male_config)
+male_config
 ```
 
 | id         | name                                | weight | direction         | method  | min | max |
