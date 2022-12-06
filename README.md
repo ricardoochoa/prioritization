@@ -13,8 +13,12 @@ You can install the package via devtools. Once that it is installed,
 just call the package.
 
 ``` r
-# install.packages(devtools); library(devtools)
-# install_github("ricardoochoa/prioritization")
+# devtools
+install.packages("devtools")
+library(devtools)
+
+# prioritization
+install_github("ricardoochoa/prioritization")
 library(prioritization)
 library(sf)
 ```
