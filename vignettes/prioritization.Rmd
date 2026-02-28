@@ -40,7 +40,8 @@ costs <- c(150, 200, 350, 500)
 s_standardize(costs, selected_method = "observe")
 
 # Benchmark method (absolute scaling against limits of 0 and 1000)
-s_standardize(costs, selected_method = "benchmark", MIN = 0, MAX = 1000)
+s_standardize(costs, selected_method = "benchmark", 
+              min_bound = 0, max_bound =1000)
 ```
 
 ## Configuring Parameters for Prioritization
