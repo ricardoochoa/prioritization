@@ -21,7 +21,8 @@ s_popup(x, r, my_variables, pretty_names, digits = 0)
 Vector kind output by the function and short description if is necessary.
 }
 \description{
-Create a character vector that summarizes and formats all variables in a data frame.
+Create a character vector that summarizes and formats all variables
+in a data frame.
 }
 \examples{
 # Example of how can be used this function.

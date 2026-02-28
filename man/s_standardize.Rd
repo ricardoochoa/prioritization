@@ -4,30 +4,44 @@
 \alias{s_standardize}
 \title{Standardize a vector of numeric values}
 \usage{
-s_standardize(x, selected_method = "observe", MIN = NULL, MAX = NULL)
+s_standardize(
+  x,
+  selected_method = "observe",
+  min_bound = NULL,
+  max_bound = NULL
+)
 }
 \arguments{
 \item{x}{A numeric vector to standardize.}
 
-\item{selected_method}{A character string indicating the scaling method. Must be either \code{"observe"} (default) or \code{"benchmark"}.}
+\item{selected_method}{A character string indicating the scaling method.
+Must be either \code{"observe"} (default) or \code{"benchmark"}.}
 
-\item{MIN}{A numeric value representing the minimum reference bound. Required if \code{selected_method} is \code{"benchmark"}. Default is \code{NULL}.}
+\item{min_bound}{A numeric value representing the minimum reference bound.
+Required if \code{selected_method} is \code{"benchmark"}.
+Default is \code{NULL}.}
 
-\item{MAX}{A numeric value representing the maximum reference bound. Required if \code{selected_method} is \code{"benchmark"}. Default is \code{NULL}.}
+\item{max_bound}{A numeric value representing the maximum reference bound.
+Required if \code{selected_method} is \code{"benchmark"}.
+Default is \code{NULL}.}
 }
 \value{
-A numeric vector of the same length as \code{x}, where the values have been scaled to lie between 0 and 100.
+A numeric vector of the same length as \code{x}, where the values have been
+scaled to lie between 0 and 100.
 }
 \description{
-Standardizes a numeric vector using either an "observe" method (scaling based on the vector's empirical min and max) or a "benchmark" method (scaling based on user-supplied reference min and max bounds). Values are scaled to a 0 to 100 range.
+Standardizes a numeric vector using either an "observe" method (scaling
+based on the vector's empirical min and max) or a "benchmark" method
+(scaling based on user-supplied reference min and max bounds). Values are
+scaled to a 0 to 100 range.
 }
 \examples{
 # "benchmark" as selected method
 s_standardize(
   x = c(0, 50, 100, 200),
   selected_method = "benchmark",
-  MIN = 0,
-  MAX = 100
+  min_bound = 0,
+  max_bound = 100
 )
 
 # "observe" as selected method

@@ -20,7 +20,8 @@ Isochrones and isodistances from Male, Maldives
 data(male_spatial)
 }
 \references{
-Data from CAPSUS, 2022, Climate-Smart Scenarios for Affordable Housing in Maldives.
+Data from CAPSUS, 2022, Climate-Smart Scenarios for
+Affordable Housing in Maldives.
 }
 \keyword{configuration}
 \keyword{data}

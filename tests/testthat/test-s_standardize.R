@@ -11,10 +11,20 @@ test_that("s_standardize scales correctly with 'observe' method", {
 })
 
 test_that("s_standardize scales correctly with 'benchmark' method", {
-  res1 <- s_standardize(c(0, 50, 100, 200), selected_method = "benchmark", MIN = 0, MAX = 100)
+  res1 <- s_standardize(
+    c(0, 50, 100, 200),
+    selected_method = "benchmark",
+    min_bound = 0,
+    max_bound = 100
+  )
   expect_equal(res1, c(0, 50, 100, 100)) # Caps at 100
 
-  res2 <- s_standardize(c(-50, 50, 150), selected_method = "benchmark", MIN = 0, MAX = 100)
+  res2 <- s_standardize(
+    c(-50, 50, 150),
+    selected_method = "benchmark",
+    min_bound = 0,
+    max_bound = 100
+  )
   expect_equal(res2, c(0, 50, 100)) # Bounds at 0 and 100
 })
 
@@ -25,15 +35,23 @@ test_that("s_standardize handles edge cases and errors", {
     "`selected_method` must be either 'observe' or 'benchmark'."
   )
 
-  # Error when benchmark method is used but MIN/MAX is missing
+  # Error when benchmark method is used but min_bound/max_bound is missing
   expect_error(
     s_standardize(c(1, 2, 3), selected_method = "benchmark"),
-    "`MIN` and `MAX` parameters must be provided when `selected_method` is 'benchmark'."
+    paste(
+      "`min_bound` and `max_bound` parameters must be provided",
+      "when `selected_method` is 'benchmark'."
+    )
   )
 
   # Warning when max equals min
   expect_warning(
-    res <- s_standardize(c(5, 5, 5), selected_method = "benchmark", MIN = 10, MAX = 10),
+    res <- s_standardize(
+      c(5, 5, 5),
+      selected_method = "benchmark",
+      min_bound = 10,
+      max_bound = 10
+    ),
     "MIN and MAX are equal; returning a vector of zeros."
   )
   expect_equal(res, c(0, 0, 0))

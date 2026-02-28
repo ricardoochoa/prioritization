@@ -1,7 +1,8 @@
 #' Pop ups
 #'
 #' @description
-#' Create a character vector that summarizes and formats all variables in a data frame.
+#' Create a character vector that summarizes and formats all variables
+#' in a data frame.
 #'
 #' @param x parameter name and vector type.
 #' @param r parameter name and vector type.
@@ -17,21 +18,20 @@
 #' # Code lines
 #'
 #' @export
-s_popup <- function(x, r, my_variables, pretty_names, digits = 0){
+s_popup <- function(x, r, my_variables, pretty_names, digits = 0) {
   # select row r from x dataframe
   x <- x[r, c(my_variables)]
   # round those variables which are numeric
-  for(v in 1:length(my_variables)){
-    if(is.numeric(x[,v])){
-      x[,v] <- round(x = x[,v], digits = digits)
+  for (v in seq_along(my_variables)) {
+    if (is.numeric(x[, v])) {
+      x[, v] <- round(x = x[, v], digits = digits)
     } else {}
   }
   # transpose
-  x = data.frame(t(x))
+  x <- data.frame(t(x))
   # use pretty names
   row.names(x) <- pretty_names
   # create html popup
-  x = paste0("<b> ", row.names(x), ": </b>", x[,1])
+  x <- paste0("<b> ", row.names(x), ": </b>", x[, 1])
   paste0(x, collapse = "<br/>")
 }
-

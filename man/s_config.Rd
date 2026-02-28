@@ -16,28 +16,44 @@ s_config(
 )
 }
 \arguments{
-\item{x}{A \code{data.frame} or \code{sf} object. If \code{sf}, geometry might need to be dropped first depending on the workflow.}
+\item{x}{A \code{data.frame} or \code{sf} object. If \code{sf}, geometry
+might need to be dropped first depending on the workflow.}
 
-\item{name}{Human-friendly names for each variable in \code{x}. Defaults to column names in \code{x}.}
+\item{name}{Human-friendly names for each variable in \code{x}.
+Defaults to column names in \code{x}.}
 
-\item{group}{A character vector with the grouping variable for each column in \code{x}. Defaults to a single "general" group.}
+\item{group}{A character vector with the grouping variable for each column
+in \code{x}. Defaults to a single "general" group.}
 
-\item{weight}{A numeric vector with the weights that will be passed to the weighted mean. The vector might be a single number or a vector with the same length as the number of columns in \code{x}. Defaults to 1.}
+\item{weight}{A numeric vector with the weights that will be passed to the
+weighted mean. The vector might be a single number or a vector with the
+same length as the number of columns in \code{x}. Defaults to 1.}
 
-\item{direction}{A character vector stating if each variable in \code{x} considers "larger is better" or "smaller is better". Defaults to "smaller is better".}
+\item{direction}{A character vector stating if each variable in \code{x}
+considers "larger is better" or "smaller is better".
+Defaults to "smaller is better".}
 
-\item{method}{A character vector stating if the standardization method should be "observe" or "benchmark". Defaults to "observe".}
+\item{method}{A character vector stating if the standardization method
+should be "observe" or "benchmark". Defaults to "observe".}
 
-\item{min}{A numeric vector representing the minimum value that should be considered in the "benchmark" method. Defaults to the calculated minimum value for each column in \code{x}.}
+\item{min}{A numeric vector representing the minimum value that should be
+considered in the "benchmark" method. Defaults to the calculated minimum
+value for each column in \code{x}.}
 
-\item{max}{A numeric vector representing the maximum value that should be considered in the "benchmark" method. Defaults to the calculated maximum value for each column in \code{x}.}
+\item{max}{A numeric vector representing the maximum value that should be
+considered in the "benchmark" method. Defaults to the calculated maximum
+value for each column in \code{x}.}
 }
 \value{
-A \code{data.frame} where each row represents the configuration for a single variable (column) in \code{x}. The data frame contains the following columns: \code{id}, \code{name}, \code{weight}, \code{direction}, \code{method}, \code{min}, and \code{max}.
+A \code{data.frame} where each row represents the configuration for a
+single variable (column) in \code{x}. The data frame contains the following
+columns: \code{id}, \code{name}, \code{weight}, \code{direction},
+\code{method}, \code{min}, and \code{max}.
 }
 \description{
-Creates a standardized configuration data frame from a provided data frame or \code{sf}
-object. The config table is intended for multi-criteria evaluation workflows.
+Creates a standardized configuration data frame from a provided data frame
+or \code{sf} object. The config table is intended for multi-criteria
+evaluation workflows.
 }
 \examples{
 # Use a sample data frame to create the config table

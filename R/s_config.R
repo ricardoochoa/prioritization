@@ -1,20 +1,36 @@
 #' Create a config data frame
 #'
 #' @description
-#' Creates a standardized configuration data frame from a provided data frame or \code{sf}
-#' object. The config table is intended for multi-criteria evaluation workflows.
+#' Creates a standardized configuration data frame from a provided data frame
+#' or \code{sf} object. The config table is intended for multi-criteria
+#' evaluation workflows.
 #'
-#' @param x A \code{data.frame} or \code{sf} object. If \code{sf}, geometry might need to be dropped first depending on the workflow.
-#' @param name Human-friendly names for each variable in \code{x}. Defaults to column names in \code{x}.
-#' @param group A character vector with the grouping variable for each column in \code{x}. Defaults to a single "general" group.
-#' @param weight A numeric vector with the weights that will be passed to the weighted mean. The vector might be a single number or a vector with the same length as the number of columns in \code{x}. Defaults to 1.
-#' @param direction A character vector stating if each variable in \code{x} considers "larger is better" or "smaller is better". Defaults to "smaller is better".
-#' @param method A character vector stating if the standardization method should be "observe" or "benchmark". Defaults to "observe".
-#' @param min A numeric vector representing the minimum value that should be considered in the "benchmark" method. Defaults to the calculated minimum value for each column in \code{x}.
-#' @param max A numeric vector representing the maximum value that should be considered in the "benchmark" method. Defaults to the calculated maximum value for each column in \code{x}.
+#' @param x A \code{data.frame} or \code{sf} object. If \code{sf}, geometry
+#'   might need to be dropped first depending on the workflow.
+#' @param name Human-friendly names for each variable in \code{x}.
+#'   Defaults to column names in \code{x}.
+#' @param group A character vector with the grouping variable for each column
+#'   in \code{x}. Defaults to a single "general" group.
+#' @param weight A numeric vector with the weights that will be passed to the
+#'   weighted mean. The vector might be a single number or a vector with the
+#'   same length as the number of columns in \code{x}. Defaults to 1.
+#' @param direction A character vector stating if each variable in \code{x}
+#'   considers "larger is better" or "smaller is better".
+#'   Defaults to "smaller is better".
+#' @param method A character vector stating if the standardization method
+#'   should be "observe" or "benchmark". Defaults to "observe".
+#' @param min A numeric vector representing the minimum value that should be
+#'   considered in the "benchmark" method. Defaults to the calculated minimum
+#'   value for each column in \code{x}.
+#' @param max A numeric vector representing the maximum value that should be
+#'   considered in the "benchmark" method. Defaults to the calculated maximum
+#'   value for each column in \code{x}.
 #'
 #' @return
-#' A \code{data.frame} where each row represents the configuration for a single variable (column) in \code{x}. The data frame contains the following columns: \code{id}, \code{name}, \code{weight}, \code{direction}, \code{method}, \code{min}, and \code{max}.
+#' A \code{data.frame} where each row represents the configuration for a
+#' single variable (column) in \code{x}. The data frame contains the following
+#' columns: \code{id}, \code{name}, \code{weight}, \code{direction},
+#' \code{method}, \code{min}, and \code{max}.
 #'
 #' @examples
 #' # Use a sample data frame to create the config table
@@ -89,5 +105,5 @@ s_config <- function(x, name = NA, group = NA, weight = NA,
     max = max
   )
 
-  return(config_df)
+  config_df
 }

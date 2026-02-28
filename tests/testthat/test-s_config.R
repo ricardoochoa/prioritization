@@ -42,5 +42,8 @@ test_that("s_config handles custom parameters", {
 })
 
 test_that("s_config fails with invalid input", {
-  expect_error(s_config(c(1, 2, 3)), "Input 'x' must be a data frame or a matrix.")
+  expect_error(
+    s_config(c(1, 2, 3)),
+    "Input 'x' must be a data frame or a matrix."
+  )
 })
