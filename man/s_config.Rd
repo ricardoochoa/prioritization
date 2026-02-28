@@ -2,7 +2,7 @@
 % Please edit documentation in R/s_config.R
 \name{s_config}
 \alias{s_config}
-\title{s_config}
+\title{Create a config data frame}
 \usage{
 s_config(
   x,
@@ -16,31 +16,43 @@ s_config(
 )
 }
 \arguments{
-\item{x}{data frame.}
+\item{x}{A \code{data.frame} or \code{sf} object. If \code{sf}, geometry might need to be dropped first depending on the workflow.}
 
-\item{name}{human friendly names for each variable in x. Defaults to column names in x.}
+\item{name}{Human-friendly names for each variable in \code{x}. Defaults to column names in \code{x}.}
 
-\item{group}{vector with the grouping variable  with the same length as rows in x. Defaults to a single "general" group.}
+\item{group}{A character vector with the grouping variable for each column in \code{x}. Defaults to a single "general" group.}
 
-\item{weight}{vector with the weights that that will be passed to weighted mean. The vector might have a single character, or a vector with the same length as rows in x. Defaults to 1.}
+\item{weight}{A numeric vector with the weights that will be passed to the weighted mean. The vector might be a single number or a vector with the same length as the number of columns in \code{x}. Defaults to 1.}
 
-\item{direction}{vector stating if each variable in x "larger is better" or "smaller is better". The vector might have a single character, or a character vector with the same length as rows in x. Defaults to "smaller is better".}
+\item{direction}{A character vector stating if each variable in \code{x} considers "larger is better" or "smaller is better". Defaults to "smaller is better".}
 
-\item{method}{vector stating the standardization method should be observe or benchmark. The vector might have a single character or a character vector with the same length as rows in x. Defaults to "observe".}
+\item{method}{A character vector stating if the standardization method should be "observe" or "benchmark". Defaults to "observe".}
 
-\item{min}{vector with the minimum value that should be considered in the benchmark method. The vector might have a single number or a numeric vector with the same length as rows in x. Defaults to the min value for each variable in x.}
+\item{min}{A numeric vector representing the minimum value that should be considered in the "benchmark" method. Defaults to the calculated minimum value for each column in \code{x}.}
 
-\item{max}{vector with the maximum value that should be considered in the benchmark method. The vector might have a single number or a numeric vector with the same length as rows in x. Defaults to the max value for each variable in x.}
+\item{max}{A numeric vector representing the maximum value that should be considered in the "benchmark" method. Defaults to the calculated maximum value for each column in \code{x}.}
 }
 \value{
-A config data frame.
+A \code{data.frame} where each row represents the configuration for a single variable (column) in \code{x}. The data frame contains the following columns: \code{id}, \code{name}, \code{weight}, \code{direction}, \code{method}, \code{min}, and \code{max}.
 }
 \description{
-Creates an config data frame from a data frame or sf.
+Creates a standardized configuration data frame from a provided data frame or \code{sf}
+object. The config table is intended for multi-criteria evaluation workflows.
 }
 \examples{
-data(male)
-x <- sf::st_drop_geometry(male_spatial)
-s_config(x)
+# Use a sample data frame to create the config table
+sample_data <- data.frame(
+  population = c(100, 200, 300),
+  cost = c(500, 100, 250)
+)
+
+# Create a default config
+s_config(sample_data)
+
+# Create a custom config indicating 'cost' is smaller is better
+s_config(
+  sample_data,
+  direction = c("larger is better", "smaller is better")
+)
 
 }
